@@ -12,6 +12,31 @@ func max(a, b int) int {
 	return b
 }
 
+// Summary holds a set of basic statistical properties of a slice of float64
+type Summary struct {
+	DataIdx    int
+	Value      float64
+	data       []float64
+	Min        float64
+	Max        float64
+	Mean       float64
+	Median     float64
+	MovingAvg5 float64
+	MovingAvg7 float64
+}
+
+// Summary is a Stringer
+func (s Summary) String() string {
+	return fmt.Sprintf("Index: %v\n\tCases: %v\n\tMean: %v\n\tMedian: %v\n\tM5: %v\n\tM6: %v\n\t",
+		s.DataIdx,
+		s.Value,
+		s.Mean,
+		s.Median,
+		s.MovingAvg5,
+		s.MovingAvg7)
+
+}
+
 // Median finds the median value of a slice of float64
 func Median(data []float64) float64 {
 	if len(data) <= 2 {
@@ -51,31 +76,6 @@ func ReverseFloat(a []float64) []float64 {
 		a[i], a[opp] = a[opp], a[i]
 	}
 	return a
-
-}
-
-// Summary holds a set of basic statistical properties of a slice of float64
-type Summary struct {
-	DataIdx    int
-	Value      float64
-	data       []float64
-	Min        float64
-	Max        float64
-	Mean       float64
-	Median     float64
-	MovingAvg5 float64
-	MovingAvg7 float64
-}
-
-// Summary is a Stringer
-func (s Summary) String() string {
-	return fmt.Sprintf("Index: %v\n\tCases: %v\n\tMean: %v\n\tMedian: %v\n\tM5: %v\n\tM6: %v\n\t",
-		s.DataIdx,
-		s.Value,
-		s.Mean,
-		s.Median,
-		s.MovingAvg5,
-		s.MovingAvg7)
 
 }
 
